@@ -1,0 +1,74 @@
+{
+  "name": "air_travel_api",
+  "version": "1.0.0",
+  "description": "API for Air Travel Applications",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "fs-extra": "^11.1.1",
+    "helmet": "^7.0.0",
+    "jet-logger": "^1.3.1",
+    "moment": "^2.29.4",
+    "morgan": "^1.10.0"
+  },
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "generate": "prisma generate",
+    "lint": "eslint --fix --ext .ts --no-error-on-unmatched-pattern \"src/**/*.ts\" \"test/**/*.ts\"",
+    "compile": "tsc",
+    "build": "npx ts-node build.ts",
+    "start": "./node_modules/.bin/ts-node -r tsconfig-paths/register dist/index.js",
+    "start:dev": "NODE_ENV=development nodemon"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.6",
+    "@tsconfig/node14": "^14.1.0",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.13",
+    "@types/fs-extra": "^11.0.1",
+    "@types/jest": "^29.5.2",
+    "@types/morgan": "^1.9.4",
+    "@types/node": "^20.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "babel-jest": "^29.6.0",
+    "esbuild": "^0.18.11",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.6.0",
+    "lint-staged": "^13.2.3",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "tscpaths": "^0.0.9",
+    "typescript": "^5.1.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix --quiet"
+    ]
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts, html",
+    "exec": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./src"
+  }
+}
